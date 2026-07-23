@@ -1,0 +1,301 @@
+/* ============================================
+   VARIÁVEIS GLOBAIS (Paleta de cores)
+   ============================================ */
+:root {
+    --color-bg-body: #f1f5f9;
+    --color-bg-card: #ffffff;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+    --color-text-placeholder: #94a3b8;
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-primary-light: #eef2ff;
+    --color-primary-border: #c7d2fe;
+    --color-primary-shadow: rgba(79,70,229,0.25);
+    --color-primary-shadow-hover: rgba(79,70,229,0.45);
+    --color-bg-stats: #f8fafc;
+    --color-border-light: #e2e8f0;
+    --color-border-focus: #4f46e5;
+    --color-bg-hover: #f1f5f9;
+    --color-bg-hover-dark: #e2e8f0;
+    --color-bg-removed: #fee2e2;
+    --color-text-removed: #dc2626;
+    --color-status-success: #16a34a;
+    --color-status-neutral: #475569;
+    --color-toast-bg: #0f172a;
+    --color-toast-border: #334155;
+    --shadow-card: 0 25px 50px -12px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-focus: 0 0 0 4px rgba(79,70,229,0.10), inset 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-btn-primary: 0 8px 18px -6px var(--color-primary-shadow);
+    --shadow-btn-primary-hover: 0 10px 20px -8px var(--color-primary-shadow-hover);
+    --shadow-toast: 0 12px 30px rgba(0,0,0,0.2);
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-small: 0.85rem;
+    --font-size-xs: 0.75rem;
+}
+
+/* ============================================
+   RESET E BASE
+   ============================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: linear-gradient(145deg, var(--color-bg-body) 0%, #e9eef3 100%);
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; font-family: var(--font-family); padding: 1.5rem;
+}
+
+/* ============================================
+   CARTÃO PRINCIPAL
+   ============================================ */
+.card {
+    background: var(--color-bg-card);
+    max-width: 960px;
+    width: 100%;
+    border-radius: 32px;
+    padding: 2.5rem 2.8rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* ============================================
+   CABEÇALHO (comum)
+   ============================================ */
+.header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;
+}
+.header-left { display: flex; align-items: center; gap: 0.75rem; }
+.header-left .icon {
+    background: var(--color-primary); color: var(--color-bg-card); width: 42px;
+    height: 42px; border-radius: 14px; display: flex;
+    align-items: center; justify-content: center; font-size: 1.4rem;
+    font-weight: 600; box-shadow: 0 8px 16px -4px var(--color-primary-shadow);
+}
+.header-left .icon i { font-size: 1.2rem; }
+.header-left h1 { font-size: 1.6rem; font-weight: 600; color: var(--color-text-primary); letter-spacing: -0.02em; }
+
+/* ============================================
+   ABAS DE NAVEGAÇÃO
+   ============================================ */
+.tabs {
+    display: flex; gap: 0.5rem; margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-border-light);
+}
+.tab-btn {
+    background: transparent; border: none; padding: 0.6rem 1.2rem;
+    font-family: var(--font-family); font-size: 0.9rem; font-weight: 500;
+    color: var(--color-text-muted); cursor: pointer;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+    position: relative; top: 2px;
+}
+.tab-btn:hover { color: var(--color-text-primary); }
+.tab-btn.active {
+    color: var(--color-primary); border-bottom-color: var(--color-primary);
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ============================================
+   TÍTULO DA FERRAMENTA
+   ============================================ */
+.tool-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem; flex-wrap: wrap;
+}
+.tool-header .tool-icon {
+    font-size: 1.6rem; line-height: 1; color: var(--color-text-muted);
+}
+.tool-header h2 {
+    font-size: 1.4rem; font-weight: 600; color: var(--color-text-primary);
+    letter-spacing: -0.01em; margin-right: 0.5rem;
+}
+.tool-header .badge {
+    margin-left: auto;
+    background: var(--color-primary-light); color: var(--color-primary-hover);
+    font-size: var(--font-size-xs); font-weight: 600; padding: 0.35rem 0.9rem;
+    border-radius: 100px; border: 1px solid var(--color-primary-border);
+    letter-spacing: 0.01em;
+}
+
+.color-primary { color: var(--color-primary); }
+.color-secondary { color: var(--color-text-primary); }
+
+/* ============================================
+   BARRA DE ESTATÍSTICAS (CleanPaste)
+   ============================================ */
+.stats-bar {
+    background: var(--color-bg-stats); border-radius: 16px; padding: 0.7rem 1.2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 1.25rem;
+    border: 1px solid var(--color-border-light); font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+.stats-bar .stat-item { display: flex; align-items: baseline; gap: 0.3rem; }
+.stats-bar .stat-item .label { font-weight: 400; color: var(--color-text-muted); }
+.stats-bar .stat-item .value {
+    font-weight: 600; color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+}
+.stats-bar .stat-item .value.removed {
+    color: var(--color-text-removed); background: var(--color-bg-removed); padding: 0.1rem 0.6rem;
+    border-radius: 100px; font-size: var(--font-size-xs);
+}
+#statusText { font-weight: 400; color: var(--color-status-neutral); }
+
+/* ============================================
+   CAMPO DE TEXTO (CleanPaste)
+   ============================================ */
+.textarea-wrapper { position: relative; margin-bottom: 1.5rem; }
+
+textarea {
+    width: 100%; min-height: 400px; padding: 1.5rem 1.8rem;
+    font-family: var(--font-family); font-size: var(--font-size-base); line-height: 1.8;
+    color: var(--color-text-primary); background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-light); border-radius: 20px;
+    resize: vertical; outline: none; transition: all 0.25s ease;
+    text-align: justify; text-justify: inter-word; white-space: pre-wrap;
+    word-wrap: break-word; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+textarea::placeholder {
+    color: var(--color-text-placeholder); font-weight: 400; font-size: 0.95rem;
+    text-align: left;
+}
+textarea:focus { border-color: var(--color-border-focus); box-shadow: var(--shadow-focus); }
+
+/* ============================================
+   FORMULÁRIOS QR CODE
+   ============================================ */
+.qr-form {
+    max-width: 500px; margin: 0 auto;
+}
+.input-group {
+    margin-bottom: 1.2rem; text-align: left;
+}
+.input-group label {
+    display: block; font-size: 0.9rem; font-weight: 500;
+    color: var(--color-text-secondary); margin-bottom: 0.3rem;
+}
+.input-group input,
+.input-group select {
+    width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--color-border-light);
+    border-radius: 12px; font-family: var(--font-family); font-size: 0.95rem;
+    background: var(--color-bg-card); color: var(--color-text-primary);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--color-border-focus); box-shadow: var(--shadow-focus);
+}
+.input-group input::placeholder { color: var(--color-text-placeholder); }
+
+.qr-form .btn-primary {
+    width: 100%; margin-top: 0.5rem;
+}
+
+/* ============================================
+   ÁREA DE RESULTADO QR CODE
+   ============================================ */
+.qr-result-area {
+    margin-top: 2rem; border-top: 1px dashed var(--color-border-light);
+    padding-top: 1.8rem; text-align: center;
+}
+.qr-result-area h3 {
+    font-size: 1.1rem; font-weight: 500; color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+.qr-result-area img {
+    margin: 0 auto 1.2rem; width: 180px; height: 180px;
+    display: block; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.qr-result-area textarea {
+    width: 100%; max-width: 400px; height: 60px; margin: 0 auto 0.5rem;
+    padding: 0.6rem; font-family: monospace; font-size: 0.8rem;
+    border-radius: 10px; border: 1.5px solid var(--color-border-light);
+    resize: none; background: var(--color-bg-stats); color: var(--color-text-primary);
+}
+.qr-result-area .btn-primary {
+    width: auto; min-width: 180px; margin: 0 auto;
+}
+
+/* ============================================
+   BOTÕES E AÇÕES
+   ============================================ */
+.actions {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+    justify-content: flex-end; align-items: center;
+    border-top: 1px solid var(--color-bg-hover); padding-top: 1.5rem;
+}
+.actions .info-hint {
+    margin-right: auto; font-size: var(--font-size-xs); color: var(--color-text-muted);
+    display: flex; align-items: center; gap: 0.4rem;
+}
+.actions .info-hint kbd {
+    background: var(--color-bg-hover); padding: 0.15rem 0.6rem; border-radius: 6px;
+    font-family: inherit; font-size: var(--font-size-xs); font-weight: 600;
+    color: var(--color-text-secondary); border: 1px solid #d1d9e6;
+}
+
+.btn {
+    font-family: var(--font-family); font-weight: 500; font-size: 0.9rem;
+    padding: 0.65rem 1.6rem; border-radius: 100px; border: none;
+    cursor: pointer; transition: all 0.2s ease; display: inline-flex;
+    align-items: center; gap: 0.5rem; background: var(--color-bg-hover);
+    color: var(--color-text-secondary); border: 1px solid transparent;
+}
+.btn:hover {
+    background: var(--color-bg-hover-dark); transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+}
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+    background: var(--color-primary); color: var(--color-bg-card);
+    box-shadow: var(--shadow-btn-primary);
+}
+.btn-primary:hover {
+    background: var(--color-primary-hover); box-shadow: var(--shadow-btn-primary-hover);
+    border-color: transparent;
+}
+
+.btn-outline {
+    border: 1px solid var(--color-border-light); background: transparent;
+}
+.btn-outline:hover { background: var(--color-bg-stats); border-color: #cbd5e1; }
+
+/* ============================================
+   TOAST (NOTIFICAÇÃO)
+   ============================================ */
+.toast {
+    position: fixed; bottom: 2rem; left: 50%;
+    transform: translateX(-50%) translateY(1.5rem);
+    background: var(--color-toast-bg); color: var(--color-bg-card); padding: 0.7rem 1.8rem;
+    border-radius: 100px; font-size: 0.9rem; font-weight: 500;
+    box-shadow: var(--shadow-toast); opacity: 0;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1); pointer-events: none;
+    font-family: var(--font-family); border: 1px solid var(--color-toast-border);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 640px) {
+    .card { padding: 1.5rem; border-radius: 24px; }
+    .header-left h1 { font-size: 1.2rem; }
+    .header-left .icon { width: 36px; height: 36px; font-size: 1.1rem; }
+    .header-left .icon i { font-size: 1rem; }
+    textarea { min-height: 250px; padding: 1rem; font-size: 0.95rem; }
+    .stats-bar { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    .actions { flex-direction: column-reverse; align-items: stretch; }
+    .actions .info-hint { margin-right: 0; justify-content: center; }
+    .btn { justify-content: center; }
+    .tabs { flex-wrap: wrap; gap: 0.2rem; }
+    .tab-btn { flex: 1; text-align: center; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+    .qr-form { max-width: 100%; }
+    .tool-header h2 { font-size: 1.2rem; }
+    .tool-header .badge { margin-left: 0; }
+}

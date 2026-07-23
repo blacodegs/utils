@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utilitários · CleanPaste + QR Code</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div class="card">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="header-left">
+                <div class="icon"><i class="fas fa-toolbox"></i></div>
+                <h1>Utilitários</h1>
+            </div>
+        </div>
+
+        <!-- Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab-clean">Limpeza de Texto</button>
+            <button class="tab-btn" data-tab="tab-qr-url">QR Code URL</button>
+            <button class="tab-btn" data-tab="tab-qr-pix">QR Code Pix</button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 1: Clean Paste                         -->
+        <!-- ========================================== -->
+        <div id="tab-clean" class="tab-content active">
+            <div class="tool-header">
+                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                <h2><span class="color-primary">Clean</span><span class="color-secondary">Paste</span></h2>
+                <span class="badge">✦ Para usar em IA</span>
+            </div>
+
+            <div class="stats-bar" id="statsBar">
+                <span class="stat-item">
+                    <span class="label">Caracteres</span>
+                    <span class="value" id="charCount">0</span>
+                </span>
+                <span class="stat-item">
+                    <span class="label">Palavras</span>
+                    <span class="value" id="wordCount">0</span>
+                </span>
+                <span class="stat-item">
+                    <span class="label">Quebras removidas</span>
+                    <span class="value removed" id="removedCount">0</span>
+                </span>
+                <span class="stat-item">
+                    <span class="label">Status</span>
+                    <span class="value" id="statusText">Aguardando...</span>
+                </span>
+            </div>
+
+            <div class="textarea-wrapper">
+                <textarea id="textInput" placeholder="Cole aqui (Ctrl+V) qualquer texto copiado de PDF, sites ou documentos. As quebras de linha e tabulações serão removidas automaticamente, e o texto ficará justificado."></textarea>
+            </div>
+
+            <div class="actions">
+                <span class="info-hint">
+                    <kbd>Ctrl+V</kbd> automático · limpeza instantânea
+                </span>
+                <button class="btn btn-outline" id="clearBtn">Limpar</button>
+                <button class="btn btn-primary" id="copyBtn">Copiar limpo</button>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 2: QR Code URL                         -->
+        <!-- ========================================== -->
+        <div id="tab-qr-url" class="tab-content">
+            <div class="tool-header">
+                <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                <h2><span class="color-primary">URL to</span> <span class="color-secondary">QR Code</span></h2>
+                <span class="badge">Gerador de QR Code</span>
+            </div>
+
+            <div class="qr-form">
+                <div class="input-group">
+                    <label for="url-input">Insira o Link / URL:</label>
+                    <input type="url" id="url-input" placeholder="https://exemplo.com.br" value="https://" />
+                </div>
+                <button class="btn btn-primary" id="gerarUrlBtn"><i class="fas fa-qrcode"></i> Gerar QR Code</button>
+            </div>
+
+            <div id="qr-result-area" class="qr-result-area" style="display: none;">
+                <h3 id="resultado-titulo">QR Code Gerado!</h3>
+                <img id="qrcode" src="" alt="QR Code" />
+                <div id="pix-copia-cola-container" style="display:none;">
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0.3rem;">Código Copia e Cola:</p>
+                    <textarea id="copia-cola" readonly onclick="this.select()"></textarea>
+                    <button class="btn btn-primary" id="copiarPixBtn" style="margin-top: 0.5rem;"><i class="fas fa-copy"></i> Copiar Código Pix</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 3: QR Code Pix                         -->
+        <!-- ========================================== -->
+        <div id="tab-qr-pix" class="tab-content">
+            <div class="tool-header">
+                <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                <h2><span class="color-primary">PIX to</span> <span class="color-secondary">QR Code</span></h2>
+                <span class="badge">Gerador de QR Code</span>
+            </div>
+
+            <div class="qr-form">
+                <div class="input-group">
+                    <label for="chave">Chave Pix (Celular, CPF, E-mail ou Aleatória):</label>
+                    <input type="text" id="chave" placeholder="Ex: (62) 99999-9999 ou e-mail" />
+                </div>
+                <div class="input-group">
+                    <label for="valor">Valor (R$):</label>
+                    <input type="number" id="valor" step="0.01" placeholder="Ex: 15.90" />
+                </div>
+                <div class="input-group">
+                    <label for="identificador">Nome de quem vai pagar (Identificador):</label>
+                    <input type="text" id="identificador" placeholder="Ex: João Silva (Opcional)" />
+                </div>
+                <button class="btn btn-primary" id="gerarPixBtn"><i class="fas fa-qrcode"></i> Gerar QR Code Pix</button>
+            </div>
+
+            <div id="qr-result-area-pix" class="qr-result-area" style="display: none;">
+                <h3 id="resultado-titulo-pix">QR Code Pix Gerado!</h3>
+                <img id="qrcode-pix" src="" alt="QR Code Pix" />
+                <div id="pix-copia-cola-container-pix">
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0.3rem;">Código Copia e Cola:</p>
+                    <textarea id="copia-cola-pix" readonly onclick="this.select()"></textarea>
+                    <button class="btn btn-primary" id="copiarPixBtnPix" style="margin-top: 0.5rem;"><i class="fas fa-copy"></i> Copiar Código Pix</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Copiado para a área de transferência!</div>
+
+    <!-- Scripts -->
+    <script src="js/abas.js"></script>
+    <script src="js/texto.js"></script>
+    <script src="js/qr-url.js"></script>
+    <script src="js/qr-pix.js"></script>
+</body>
+</html>
