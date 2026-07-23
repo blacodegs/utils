@@ -15,24 +15,30 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 </head>
 <body>
 
-    <div class="card">
-        <!-- Cabeçalho -->
-        <div class="header">
-            <div class="header-left">
-                <div class="icon"><i class="fas fa-toolbox"></i></div>
-                <h1>Utilitários</h1>
-            </div>
+    <!-- Cabeçalho fixo -->
+    <header class="header">
+        <div class="header-left">
+            <img src="images/blacodegs-400-87.png" alt="Logo" class="logo-image">
+            <h1>Utilitários</h1>
         </div>
+    </header>
 
-        <!-- Abas -->
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="tab-clean">Limpeza de Texto</button>
-            <button class="tab-btn" data-tab="tab-qr-url">QR Code URL</button>
-            <button class="tab-btn" data-tab="tab-qr-pix">QR Code Pix</button>
-        </div>
+    <!-- Abas fixas -->
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="tab-clean">Limpeza de Texto</button>
+        <button class="tab-btn" data-tab="tab-qr-url">QR Code URL</button>
+        <button class="tab-btn" data-tab="tab-qr-pix">QR Code Pix</button>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="main-container">
 
         <!-- ========================================== -->
         <!-- ABA 1: Clean Paste                         -->
@@ -142,7 +148,7 @@
             </div>
         </div>
 
-    </div>
+    </main>
 
     <!-- Toast -->
     <div id="toast" class="toast">Copiado para a área de transferência!</div>
@@ -152,5 +158,18 @@
     <script src="js/texto.js"></script>
     <script src="js/qr-url.js"></script>
     <script src="js/qr-pix.js"></script>
+
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado com sucesso:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Falha ao registrar Service Worker:', error);
+                });
+        }
+    </script>
 </body>
 </html>

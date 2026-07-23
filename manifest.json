@@ -1,0 +1,34 @@
+{
+    "short_name": "Utilitários",
+    "name": "Utilitários - CleanPaste e QR Code",
+    "description": "Ferramentas para limpeza de texto e geração de QR Code",
+    "icons": [
+        {
+            "src": "images/blacodegs-165.png",
+            "sizes": "165x165",
+            "type": "image/png"
+        },
+        {
+            "src": "images/blacodegs-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/blacodegs-400-87.png",
+            "sizes": "400x400",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "images/blacodegs-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#4f46e5",
+    "background_color": "#f1f5f9",
+    "orientation": "portrait-primary"
+}
